@@ -19,6 +19,7 @@ install:
   - docker pull multimediabs/plumb_unit:debian_jessie
   - docker pull multimediabs/plumb_unit:debian_wheezy
   - docker pull multimediabs/plumb_unit:archlinux
+  - docker pull multimediabs/plumb_unit:ubuntu
 
 script:
   - ./bash_unit tests/tests*
