@@ -38,7 +38,7 @@ RUN pip install --upgrade PyYAML dnspython pyasn1 jinja2 paramiko ansible
 # Optimize first run of apt ansible module
 RUN ansible -i localhost, -c local all -m apt -a "update_cache=yes"
 
-ADD files/locale.gen /etc/locale.gen
+ADD locale.gen /etc/locale.gen
 RUN locale-gen
 ENV LANG fr_FR.UTF-8
 

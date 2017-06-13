@@ -16,7 +16,7 @@ RUN pacman -S --noconfirm \
       sudo \
       systemd-sysvcompat
 
-ADD files/locale.gen /etc/locale.gen
+ADD locale.gen /etc/locale.gen
 RUN locale-gen
 ENV LANG fr_FR.UTF-8
 

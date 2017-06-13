@@ -1,0 +1,21 @@
+#!/bin/bash
+
+test_centos6_image_can_be_built() {
+  assert "docker build -t multimediabs/plumb_unit:centos6 ../dockerfiles/centos6/"
+}
+
+test_jessie_image_can_be_built() {
+  assert "docker build -t multimediabs/plumb_unit:jessie ../dockerfiles/debian/jessie/"
+}
+
+test_wheezy_image_can_be_built() {
+  assert "docker build -t multimediabs/plumb_unit:wheezy ../dockerfiles/debian/wheezy/"
+}
+
+test_archlinux_image_can_be_built() {
+  assert "docker build -t multimediabs/plumb_unit:archlinux ../dockerfiles/archlinux/"
+}
+
+test_ubuntu_image_can_be_built() {
+  assert "docker build -t multimediabs/plumb_unit:ubuntu ../dockerfiles/ubuntu/"
+}

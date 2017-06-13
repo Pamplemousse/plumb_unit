@@ -3,3 +3,8 @@
 To run the tests, simply issue the following command :
 
  ./bash_unit tests*
+
+
+If you just want to ensure that images are valid (note that first run can be very long as it needs to pull down base images and install everything):
+
+ ./bash_unit tests/tests_4_docker_images
