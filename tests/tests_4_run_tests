@@ -47,8 +47,6 @@ EOF
 
 test_v_option_launches_verbose_docker() {
   assert "./run_tests.sh -v -p one_equal_to_one test_plumb_unit > /tmp/expect.$$ 2>&1"
-#  assert "grep -e 'Sending build context to Docker daemon' /tmp/expect.$$" "expected verbose docker output didn't come"
-#  assert "grep -e 'Successfully built' /tmp/expect.$$" "expected verbose docker output didn't come"
   assert "grep -e 'Running docker with flags' /tmp/expect.$$" "expected verbose docker output didn't come"
 }
 
