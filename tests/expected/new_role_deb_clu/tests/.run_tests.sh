@@ -25,24 +25,7 @@ start_container() {
   eval echo "Running docker with flags [${docker_flags}]" ${output}
   docker run -d ${docker_flags} ${docker_volumes} --name=${container} --hostname=${container} ${docker_image}
 
-  if grep jessie <(echo $distrib_name) >/dev/null
-  then
-    #wait for systemd to be ready
-    while ! docker exec $container systemctl status >/dev/null ; do sleep 1 ; done
-    #wait for tmpfiles cleaner to be started so that it does not clean /tmp while tests are running
-    while ! docker exec $container systemctl status systemd-tmpfiles-clean.timer >/dev/null ; do sleep 1 ; done
-  fi
-
-  if grep wheezy <(echo $distrib_name) >/dev/null
-  then
-    tst_file=$(docker exec $container mktemp)
-    max_wait=10
-    while [ ${max_wait} -gt 0 ] ; do
-      max_wait=$((max_wait-1))
-      [ $(docker exec $container ls ${tst_file} >/dev/null 2>&1 | wc -l ) -eq 0 ] && max_wait=0
-      sleep 1
-    done
-  fi
+  docker exec $container /usr/local/bin/is_ready
 }
 
 format() {

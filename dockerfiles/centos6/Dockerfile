@@ -14,4 +14,6 @@ RUN yum install -y ansible
 RUN useradd -ms /bin/bash -c "Robert Paulson" rpaulson
 RUN echo "rpaulson ALL=(root) NOPASSWD: ALL" > /etc/sudoers.d/rpaulson
 
+COPY is_ready.sh /usr/local/bin/is_ready
+
 CMD ["/sbin/init"]

@@ -19,3 +19,11 @@ test_archlinux_image_can_be_built() {
 test_ubuntu_image_can_be_built() {
   assert "docker build -t multimediabs/plumb_unit:ubuntu ../dockerfiles/ubuntu/"
 }
+
+test_is_ready_script_is_present_in_any_distributions_container() {
+  for distrib in $(./run_tests.sh -q); do
+    container=$(docker run --rm -d multimediabs/plumb_unit:"$distrib")
+    assert "docker exec $container test -f /usr/local/bin/is_ready" "/usr/local/bin/is_ready is missing in $distrib"
+    docker rm -f "$container" >/dev/null
+  done
+}

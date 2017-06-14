@@ -65,4 +65,6 @@ RUN wget "https://raw.githubusercontent.com/docker/docker/${DIND_COMMIT}/hack/di
 VOLUME /var/lib/docker
 EXPOSE 2375
 
+COPY is_ready.sh /usr/local/bin/is_ready
+
 CMD ["/sbin/init"]

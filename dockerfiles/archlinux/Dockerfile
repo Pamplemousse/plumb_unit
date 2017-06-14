@@ -24,4 +24,6 @@ ENV LANG fr_FR.UTF-8
 RUN useradd -ms /bin/bash -c "Robert Paulson" rpaulson
 RUN echo "rpaulson ALL=(root) NOPASSWD: ALL" >> /etc/sudoers
 
+COPY is_ready.sh /usr/local/bin/is_ready
+
 CMD ["/sbin/init"]

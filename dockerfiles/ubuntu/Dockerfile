@@ -28,4 +28,6 @@ RUN echo "rpaulson ALL=(root) NOPASSWD: ALL" >> /etc/sudoers
 
 ENV TERM xterm
 
+COPY is_ready.sh /usr/local/bin/is_ready
+
 CMD ["/sbin/init"]
