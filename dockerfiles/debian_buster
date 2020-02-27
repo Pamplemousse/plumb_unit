@@ -55,6 +55,7 @@ RUN set -x && \
 ENV DIND_COMMIT 3b5fac462d21ca164b3778647420016315289034
 RUN curl -o /usr/local/bin/dind "https://raw.githubusercontent.com/docker/docker/${DIND_COMMIT}/hack/dind" \
     && chmod +x /usr/local/bin/dind
+RUN pip install docker
 EXPOSE 2375
 
 ### Start systemd, be a system
